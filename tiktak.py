@@ -2,10 +2,14 @@
 
 print("Tik Tak Toe Game")
 
+# default cell names
 cells = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+#set winner
 winner = 'N'
+#counter used to switch between players
 pcounter = 1
 
+# updates the board
 def setboard(cells):
     board = (f"""
       #   #
@@ -18,6 +22,7 @@ def setboard(cells):
     """)
     return board
 
+# checks if there is a winner
 def win(cells):
     for column in range(3):
         if cells[column] == cells[column+3] and cells[column] == cells[column+6]:
@@ -39,6 +44,7 @@ def win(cells):
         return 'D'
     return 'N'
 
+# gets the users input
 def UserInput(cells, counter):
     if pcounter % 2 == 0:
         player = 'x'
@@ -50,7 +56,10 @@ def UserInput(cells, counter):
     cells[choise - 1] = player
     return cells
 
-while winner == 'N' and winner !='D':
+#main program
+
+# will play the game until there is a winner or a draw
+while winner == 'N':
     board = setboard(cells)
     print(board)
     cells = UserInput(cells, pcounter)
@@ -59,6 +68,7 @@ while winner == 'N' and winner !='D':
     
 board = setboard(cells)
 print(board)
+# prints result (draw or win)
 if winner == 'D':
     print("The game ended in a tie")
 else:    
